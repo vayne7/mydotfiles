@@ -1,0 +1,492 @@
+" -----------------     Author: Light
+" -----------------     Email: Black_Art@outlook.com
+" -----------------     Date: 2015-05-04 00:02:05
+"********************************encoding**************************************
+"默认为 UTF-8 编码
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,latin1
+set fileencoding=utf-8 
+let &termencoding=&encoding
+
+"********************************ui**************************************
+"字体/配色
+"以下为解决中文显示问题,以及相应带来的提示及菜单乱码问题
+set encoding=utf-8 " 设置vim内部使用的字符编码,原来是cp936
+lang messages zh_CN.UTF-8 " 解决consle输出乱码 
+"解决菜单乱码 
+source $VIMRUNTIME/delmenu.vim 
+source $VIMRUNTIME/menu.vim
+
+colorscheme molokai
+set guifont=Source\ Code\ Pro:h11.5,Consolas:h16
+
+"去掉工具条、菜单栏、滚动条
+"set go=aAce              
+"set guioptions-=m 
+set shm+=I
+set guioptions-=T
+
+"高亮光标所在的行
+set cursorline
+
+" 自动最大化窗口
+if has('gui_running')
+    au GUIEnter * simalt ~x
+    "给 Win32 下的 gVim 窗口设置透明度
+    au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 237)
+endif
+
+"********************************language**************************************
+
+"语言中文
+language chinese
+language messages zh_CN.utf-8
+
+
+
+"********************************system**************************************
+"保留Ctrl+A/c/v操作
+"source $VIMRUNTIME/mswin.vim
+
+"与windows共享剪贴板
+set clipboard+=unnamed
+
+"保留历史记录
+set history=500
+
+"导入删除菜单脚本，删除乱码的菜单
+source $VIMRUNTIME/delmenu.vim
+
+"导入正常的菜单脚本
+source $VIMRUNTIME/menu.vim 
+ 
+set nocompatible
+
+"Diff 模式的时候鼠标同步滚动 for Vim7.3
+if has('cursorbind')
+    set cursorbind
+end
+
+"********************************setting**************************************
+" 行控制
+set linebreak
+set textwidth=80
+set wrap
+
+"带如下字符不换行
+set iskeyword+=_,$,@,%,#,-
+
+"标签页
+set tabpagemax=9
+set showtabline=2
+
+"控制台响铃
+set noerrorbells
+set novisualbell
+set t_vb= "close visual bell
+"行号和标尺
+set number
+set ruler
+set rulerformat=%15(%c%V\ %p%%%)
+
+"命令行于状态行
+set ch=1
+set ls=2 " 始终显示状态行
+set wildmenu "命令行补全以增强模式运行
+
+"高亮、实时搜索
+set hlsearch  
+set magic     
+set showmatch 
+set mat=2    
+set incsearch
+set ignorecase
+
+"制表符
+set tabstop=4
+set expandtab
+set smarttab
+set shiftwidth=4
+set softtabstop=4
+
+"状态栏显示目前所执行的指令
+set showcmd 
+
+"缩进
+set autoindent
+set smartindent
+
+"自动重新读入
+set autoread
+
+"插入模式下使用 <BS>、<Del> <C-W> <C-U>
+set backspace=indent,eol,start
+
+"设定在任何模式下鼠标都可用
+set mouse=a
+
+"自动改变当前目录
+set autochdir
+
+"备份和缓存
+set nobackup
+set noswapfile
+
+"自动完成
+set complete=.,w,b,k,t,i
+set completeopt=longest,menu
+
+"定义 <Leader> 为逗号
+let mapleader = ","
+let maplocalleader = ","
+
+"保证语法高亮
+syntax enable
+syntax on
+
+filetype plugin indent on
+
+
+"********************************mapping**************************************
+
+"标签页操作
+nmap nt :tabnew<cr>:NERDTreeToggle<cr><c-w>w
+nmap tg :tabprevious<cr>
+nmap nc :tabclose<cr>
+
+"去掉查找后的高亮
+nmap nh :noh<cr>
+
+"转换文件类型
+nmap 'h :set filetype=html<cr>
+nmap 'j :set filetype=javascript<cr>
+nmap 'c :set filetype=css<cr>
+
+"在行尾添加;
+nmap ; $A;<ESC>
+
+"在行尾添加，
+nmap <leader><leader> $A,<ESC>
+
+"另存为
+nmap ss :browse confirm saveas<cr>
+
+"切换窗口
+nmap tt <c-w>w
+
+"新窗口打开配置文件
+nmap <leader>e :tabnew $VIM/_vimrc<cr>
+
+" 按下 Q 不进入 Ex 模式，而是退出
+nmap Q :x<cr>
+
+"Tabularize插件对齐快捷键
+nmap <Leader>te :Tabularize /=<CR>
+nmap <Leader>tm :Tabularize /:<CR>
+"排序注释
+nmap <Leader>tc :Tabularize /\/\/<CR>
+
+"搜索
+nmap <Leader>n :cnext<cr>
+nmap <Leader>p :cprev<cr>
+nmap <Leader>l :clist<cr>
+nmap <Leader>w :cw<cr>
+
+"********************************plugin**************************************
+
+"插件快捷键
+nmap ne :NERDTreeToggle<cr>
+
+"NERDTree配置
+let NERDTreeDirArrows=1 "目录箭头 1 显示箭头  0传统+-|号
+
+"neocomplcache配置
+let g:neocomplcache_enable_at_startup = 1 
+let g:neocomplcache_enable_camel_case_completion = 1 
+
+"doxygen配置
+let g:DoxygenToolkit_authorName="qinjia"
+let g:DoxygenToolkit_briefTag_funcName="yes"
+let g:doxygen_enhanced_color=1
+let g:DoxygenToolkit_paramTag_pre="@Param " 
+let g:DoxygenToolkit_returnTag="@Returns "
+
+nmap <Leader>d :Dox<cr>
+nmap <Leader>b :DoxAuthor<cr>
+"********************************syntax**************************************
+
+" JavaScript 语法高亮
+au FileType html,javascript let g:javascript_enable_domhtmlcss = 1
+au BufRead,BufNewFile *.js set syntax=jquery
+
+" 给各语言文件添加 Dict
+let s:dict_dir = $VIM.'\vimfiles\dict\'
+let s:dict_dir = "setlocal dict+=".s:dict_dir
+au FileType html exec s:dict_dir."html.dict"
+au FileType css,html exec s:dict_dir."css.dict"
+au FileType javascript,html exec s:dict_dir."javascript.dict"
+au FileType javascript set dictionary+=$VIM.'\vimfiles\dict\node.dict'
+
+" 将指定文件的换行符转换成 dos 格式
+au FileType php,javascript,html,xml,json,css,txt,vim,vimwiki set ff=dos
+
+
+"********************************function**************************************
+
+" 获取当前目录
+"func! GetPWD()
+    "return substitute(getcwd(), "", "", "g")
+"endf
+
+ 
+"------------------------------------------------------------------------------
+"  < 判断操作系统是否是 Windows 还是 Linux >
+"------------------------------------------------------------------------------
+if(has("win32") || has("win64") || has("win95") || has("win16"))
+    let g:iswindows = 1
+else
+    let g:iswindows = 0
+endif
+ 
+"------------------------------------------------------------------------------
+"  < 判断是终端还是 Gvim >
+"------------------------------------------------------------------------------
+if has("gui_running")
+    let g:isGUI = 1
+else
+    let g:isGUI = 0
+endif
+ 
+" -----------------------------------------------------------------------------
+"  < 编译、连接、运行配置 (目前只配置了C、C++、Java语言)>
+" -----------------------------------------------------------------------------
+" F9 一键保存、编译、连接存并运行
+nmap <F9> :call Run()<CR>
+imap <F9> <ESC>:call Run()<CR>
+ 
+" Ctrl + F9 一键保存并编译
+nmap <c-F9> :call Compile()<CR>
+imap <c-F9> <ESC>:call Compile()<CR>
+ 
+" Ctrl + F10 一键保存并连接
+nmap <c-F10> :call Link()<CR>
+imap <c-F10> <ESC>:call Link()<CR>
+ 
+let s:LastShellReturn_C = 0
+let s:LastShellReturn_L = 0
+let s:ShowWarning = 1
+let s:Obj_Extension = '.o'
+let s:Exe_Extension = '.exe'
+let s:Class_Extension = '.class'
+let s:Sou_Error = 0
+ 
+let s:windows_CFlags = 'gcc\ -fexec-charset=gbk\ -Wall\ -g\ -std=c11\ -O0\ -c\ %\ -o\ %<.o'
+let s:linux_CFlags = 'clang\ -Wall\ -g\ -O0\ -std=c11\ -c\ %\ -o\ %<.o'
+ 
+let s:windows_CPPFlags = 'g++\ -fexec-charset=gbk\ -Wall\ -g\ -O0\ -c\ %\ -o\ %<.o'
+let s:linux_CPPFlags = 'clang++\ -Wall\ -g\ -O0\ -c\ %\ -o\ %<.o'
+ 
+let s:JavaFlags = 'javac\ %'
+ 
+func! Compile()
+    exe ":ccl"
+    exe ":update"
+    let s:Sou_Error = 0
+    let s:LastShellReturn_C = 0
+    let Sou = expand("%:p")
+    let v:statusmsg = ''
+    if expand("%:e") == "c" || expand("%:e") == "cpp" || expand("%:e") == "cxx"
+        let Obj = expand("%:p:r").s:Obj_Extension
+        let Obj_Name = expand("%:p:t:r").s:Obj_Extension
+        if !filereadable(Obj) || (filereadable(Obj) && (getftime(Obj) < getftime(Sou)))
+            redraw!
+            if expand("%:e") == "c"
+                if g:iswindows
+                    exe ":setlocal makeprg=".s:windows_CFlags
+                else
+                    exe ":setlocal makeprg=".s:linux_CFlags
+                endif
+                echohl WarningMsg | echo " compiling..."
+                silent make
+            elseif expand("%:e") == "cpp" || expand("%:e") == "cxx"
+                if g:iswindows
+                    exe ":setlocal makeprg=".s:windows_CPPFlags
+                else
+                    exe ":setlocal makeprg=".s:linux_CPPFlags
+                endif
+                echohl WarningMsg | echo " compiling..."
+                silent make
+            endif
+            redraw!
+            if v:shell_error != 0
+                let s:LastShellReturn_C = v:shell_error
+            endif
+            if g:iswindows
+                if s:LastShellReturn_C != 0
+                    exe ":bo cope"
+                    echohl WarningMsg | echo " compilation failed"
+                else
+                    if s:ShowWarning
+                        exe ":bo cw"
+                    endif
+                    echohl WarningMsg | echo " compilation successful"
+                endif
+            else
+                if empty(v:statusmsg)
+                    echohl WarningMsg | echo " compilation successful"
+                else
+                    exe ":bo cope"
+                endif
+            endif
+        else
+            echohl WarningMsg | echo ""Obj_Name"is up to date"
+        endif
+    elseif expand("%:e") == "java"
+        let class = expand("%:p:r").s:Class_Extension
+        let class_Name = expand("%:p:t:r").s:Class_Extension
+        if !filereadable(class) || (filereadable(class) && (getftime(class) < getftime(Sou)))
+            redraw!
+            exe ":setlocal makeprg=".s:JavaFlags
+            echohl WarningMsg | echo " compiling..."
+            silent make
+            redraw!
+            if v:shell_error != 0
+                let s:LastShellReturn_C = v:shell_error
+            endif
+            if g:iswindows
+                if s:LastShellReturn_C != 0
+                    exe ":bo cope"
+                    echohl WarningMsg | echo " compilation failed"
+                else
+                    if s:ShowWarning
+                        exe ":bo cw"
+                    endif
+                    echohl WarningMsg | echo " compilation successful"
+                endif
+            else
+                if empty(v:statusmsg)
+                    echohl WarningMsg | echo " compilation successful"
+                else
+                    exe ":bo cope"
+                endif
+            endif
+        else
+            echohl WarningMsg | echo ""class_Name"is up to date"
+        endif
+    else
+        let s:Sou_Error = 1
+        echohl WarningMsg | echo " please choose the correct source file"
+    endif
+    exe ":setlocal makeprg=make"
+endfunc
+ 
+func! Link()
+    call Compile()
+    if s:Sou_Error || s:LastShellReturn_C != 0
+        return
+    endif
+    if expand("%:e") == "c" || expand("%:e") == "cpp" || expand("%:e") == "cxx"
+        let s:LastShellReturn_L = 0
+        let Sou = expand("%:p")
+        let Obj = expand("%:p:r").s:Obj_Extension
+        if g:iswindows
+            let Exe = expand("%:p:r").s:Exe_Extension
+            let Exe_Name = expand("%:p:t:r").s:Exe_Extension
+        else
+            let Exe = expand("%:p:r")
+            let Exe_Name = expand("%:p:t:r")
+        endif
+        let v:statusmsg = ''
+        if filereadable(Obj) && (getftime(Obj) >= getftime(Sou))
+            redraw!
+            if !executable(Exe) || (executable(Exe) && getftime(Exe) < getftime(Obj))
+                if expand("%:e") == "c"
+                    setlocal makeprg=gcc\ -o\ %<\ %<.o
+                    echohl WarningMsg | echo " linking..."
+                    silent make
+                elseif expand("%:e") == "cpp" || expand("%:e") == "cxx"
+                    setlocal makeprg=g++\ -o\ %<\ %<.o
+                    echohl WarningMsg | echo " linking..."
+                    silent make
+                endif
+                redraw!
+                if v:shell_error != 0
+                    let s:LastShellReturn_L = v:shell_error
+                endif
+                if g:iswindows
+                    if s:LastShellReturn_L != 0
+                        exe ":bo cope"
+                        echohl WarningMsg | echo " linking failed"
+                    else
+                        if s:ShowWarning
+                            exe ":bo cw"
+                        endif
+                        echohl WarningMsg | echo " linking successful"
+                    endif
+                else
+                    if empty(v:statusmsg)
+                        echohl WarningMsg | echo " linking successful"
+                    else
+                        exe ":bo cope"
+                    endif
+                endif
+            else
+                echohl WarningMsg | echo ""Exe_Name"is up to date"
+            endif
+        endif
+        setlocal makeprg=make
+    elseif expand("%:e") == "java"
+        return
+    endif
+endfunc
+ 
+func! Run()
+    let s:ShowWarning = 0
+    call Link()
+    let s:ShowWarning = 1
+    if s:Sou_Error || s:LastShellReturn_C != 0 || s:LastShellReturn_L != 0
+        return
+    endif
+    let Sou = expand("%:p")
+    if expand("%:e") == "c" || expand("%:e") == "cpp" || expand("%:e") == "cxx"
+        let Obj = expand("%:p:r").s:Obj_Extension
+        if g:iswindows
+            let Exe = expand("%:p:r").s:Exe_Extension
+        else
+            let Exe = expand("%:p:r")
+        endif
+        if executable(Exe) && getftime(Exe) >= getftime(Obj) && getftime(Obj) >= getftime(Sou)
+            redraw!
+            echohl WarningMsg | echo " running..."
+            if g:iswindows
+                exe ":!%<.exe"
+            else
+                if g:isGUI
+                    exe ":!gnome-terminal -x bash -c './%<; echo; echo 请按 Enter 键继续; read'"
+                else
+                    exe ":!clear; ./%<"
+                endif
+            endif
+            redraw!
+            echohl WarningMsg | echo " running finish"
+        endif
+    elseif expand("%:e") == "java"
+        let class = expand("%:p:r").s:Class_Extension
+        if getftime(class) >= getftime(Sou)
+            redraw!
+            echohl WarningMsg | echo " running..."
+            if g:iswindows
+                exe ":!java %<"
+            else
+                if g:isGUI
+                    exe ":!gnome-terminal -x bash -c 'java %<; echo; echo 请按 Enter 键继续; read'"
+                else
+                    exe ":!clear; java %<"
+                endif
+            endif
+            redraw!
+            echohl WarningMsg | echo " running finish"
+        endif
+    endif
+endfunc
