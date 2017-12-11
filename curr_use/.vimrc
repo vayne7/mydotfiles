@@ -388,7 +388,7 @@ if executable('rg')
 endif
 
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>bb :Buffers<CR>
 nnoremap <silent> <leader>e :FZF -m<CR>
 
 " snippets
@@ -463,6 +463,16 @@ nnoremap <Leader>o :.Gbrowse<CR>
 "*****************************************************************************
 "" Custom configs
 "*****************************************************************************
+" code commentary
+autocmd FileType apache setlocal commentstring = #\ %s
+
+" map quick exit
+noremap <leader>qq :q!<enter>
+noremap <leader>ww :w
+
+" ^ $ map E B
+noremap <leader>b ^
+noremap <leader>e $
 
 " html
 " for html files, 2 spaces
@@ -489,14 +499,14 @@ augroup vimrc-python
 augroup END
 
 " jedi-vim
-let g:jedi#popup_on_dot = 0
+let g:jedi#popup_on_dot = 1
 let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#goto_definitions_command = "<leader>d"
 let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>n"
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "0"
-let g:jedi#completions_command = "<tab>"
+let g:jedi#completions_command = "<C-a>"
 let g:jedi#smart_auto_mappings = 0
 
 " syntastic
