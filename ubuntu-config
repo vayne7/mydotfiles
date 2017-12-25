@@ -6,7 +6,11 @@ sudo apt-get upgrade
 sudo apt-get install curl && wget && screenfetch && htop && vim && git
 
 # python env
+1.python install pip
 sudo apt-get install python-pip 
+
+2.python install virtualenv 
+pip install virtualenv
 
 #pip upgrade
 pip install -U pip
@@ -16,14 +20,18 @@ pip install -U pip
 ~/.pip/pip.conf 
 2.windows 
 %HOME%\pip\pip.ini 
-[global] 
 
+[global] 
 index-url = http://pypi.douban.com/simple 
 trusted-host = pypi.douban.com 
 
 # node env
 1.nvm install 
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+2.change node mirror taobao
+export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/  && npm install -g cnpm
+
+
 
 
 # zsh env
