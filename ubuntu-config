@@ -39,3 +39,42 @@ export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/  && npm instal
 
 2.oh-my-zsh install 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# ubuntu desktop flat theme install
+1.install the control panel
+sudo apt-get install unity-tweak-tool
+
+2.If you are on Ubuntu 16.04 or higher, run the commands below to install Ubuntu Tweak:
+wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
+sudo sh -c 'echo "deb http://archive.getdeb.net/ubuntu xenial-getdeb apps" >> /etc/apt/sources.list.d/getdeb.list'
+sudo apt-get update
+sudo apt-get install ubuntu-tweak
+
+3. Using the noobslab PPA Theme
+sudo add-apt-repository ppa:noobslab/themes
+sudo apt-get update
+sudo apt-get install flatabulous-theme
+
+4. Flat Icons
+sudo add-apt-repository ppa:noobslab/icons
+sudo apt-get update
+sudo apt-get install ultra-flat-icons
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
