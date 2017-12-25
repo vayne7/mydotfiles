@@ -85,6 +85,10 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias    subl="/opt/sublime_text/sublime_text"
 alias reload='source ~/.zshrc'
+alias xampp='sudo /opt/lampp/manager-linux-x64.run'
+alias mysql='/opt/lampp/bin/mysql'
+alias env='. venv/bin/activate'
+alias de='deactivate'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
