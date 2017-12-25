@@ -10,7 +10,9 @@ sudo apt-get install curl && wget && screenfetch && htop && vim && git && tmux
 sudo apt-get install python-pip 
 
 2.python install virtualenv 
-pip install virtualenv
+pip install virtualenv => venv/lib/python2.7
+
+pip3 install virtualenv => venv/lib/python3.5
 
 #pip upgrade
 pip install -U pip
@@ -24,6 +26,11 @@ pip install -U pip
 [global] 
 index-url = http://pypi.douban.com/simple 
 trusted-host = pypi.douban.com 
+
+
+
+
+
 
 # node env
 1.nvm install 
