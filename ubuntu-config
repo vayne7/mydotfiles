@@ -1,0 +1,12 @@
+sudo apt-get update
+
+sudo apt-get upgrade 
+
+# system env
+sudo apt-get install curl && wget && screenfetch && htop && vim 
+
+# python env
+sudo apt-get install python-pip 
+
+#pip upgrade
+pip install -U pip
