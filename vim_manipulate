@@ -1,4 +1,8 @@
-preety code : gg=G in no mode
+1.preety code :
+gg=G in no mode
+
+2.vim 手动的加载snippets 文件类型
+
 
 set encoding=utf-8
 set termencoding=utf-8
