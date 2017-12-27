@@ -2,6 +2,10 @@
 gg=G in no mode
 
 2.vim 手动的加载snippets 文件类型
+:set ft=python.django.php.html
+
+3.tmux kill sessions
+:kill-session -t targetname
 
 
 set encoding=utf-8
