@@ -7,6 +7,10 @@ gg=G in no mode
 3.tmux kill sessions
 :kill-session -t targetname
 
+4. sshfs mount filesystem 
+1.remote server install : openssh-server && openssh-sftp-server
+2.local server install : sudo apt-get install sshfs openssh
+
 
 set encoding=utf-8
 set termencoding=utf-8
