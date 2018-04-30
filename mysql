@@ -24,3 +24,10 @@ mysql -u root
 3.create database
 create database dbname default character set utf8 collate utf8_general_ci
 
+//select db
+use dbname;
+
+//show db tables
+show tables from db;
+
+//
