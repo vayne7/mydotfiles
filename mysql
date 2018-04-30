@@ -1,0 +1,26 @@
+1.connecting to mysql 
+mysql -uroot -p
+
+MySQL -u root
+　　mysql> SET PASSWORD FOR 'root'@'localhost' = PASSWORD('newpass');
+  	
+mysqladmin -u root password "newpass"
+
+//using update to change root password
+mysql -u root
+　mysql> use mysql;
+　mysql> UPDATE user SET Password = PASSWORD('newpass') WHERE user = 'root';
+　mysql> FLUSH PRIVILEGES;
+ 
+//if forgot the root pass  
+ mysqld_safe --skip-grant-tables&
+　　mysql -u root mysql
+　　mysql> UPDATE user SET password=PASSWORD("new password") WHERE user='root';
+　　mysql> FLUSH PRIVILEGES;
+
+2.show databases;  //show all the dbname from the mysql-server
+
+
+3.create database
+create database dbname default character set utf8 collate utf8_general_ci
+
