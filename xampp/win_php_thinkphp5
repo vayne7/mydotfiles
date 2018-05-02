@@ -1,0 +1,5 @@
+// installing composer  
+composer create-project topthink/thinkphp tp5
+
+//using command auto create mvc layers
+php think build --module layNane
