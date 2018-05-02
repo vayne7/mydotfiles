@@ -1,0 +1,29 @@
+//hide index.php => thinkphp  for apache 
+
+<If Module mod_rewrite.c>
+Options +FollowSymlinks -Multiviews
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
+</IfModule>
+
+//for thinkphp redefine route for short url access 
+return [
+    // 添加路由规则 路由到 index控制器的hello操作方法
+    'hello/:name' => 'index/index/hello',
+];
+before : http://tp5.com/index/index/hello/name/thinkphp
+
+after :http://tp5.com/hello/thinkphp
+
+
+
+//hide index.php => for nginx   location: nginx.conf
+
+location / { // …..
+if (!-e $request_filename) {
+rewrite ^(.*)$ /index.php?s=/$1 last;
+break;
+}
+}
