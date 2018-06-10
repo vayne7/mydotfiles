@@ -1,0 +1,5 @@
+snippets
+
+php  snippets 
+print $    used \$ to transferr   refference:http://sublimetext.info/docs/en/extensibility/snippets.html
+
