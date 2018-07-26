@@ -1,4 +1,6 @@
-一、Specified key was too long error
+一、 https://laravel.gen.tr/cheatsheet/       laravel cheatsheet
+
+二、Specified key was too long error
     edit  AppServiceProvider.php
 use Illuminate\Support\Facades\Schema;
 
@@ -6,3 +8,7 @@ public function boot()
 {
     Schema::defaultStringLength(191);
 }
+
+
+三、make auth in laravel 
+https://auth0.com/blog/creating-your-first-laravel-app-and-adding-authentication/  
