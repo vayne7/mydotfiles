@@ -1,0 +1,8 @@
+一、Specified key was too long error
+    edit  AppServiceProvider.php
+use Illuminate\Support\Facades\Schema;
+
+public function boot()
+{
+    Schema::defaultStringLength(191);
+}
