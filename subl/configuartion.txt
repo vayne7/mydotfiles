@@ -3,3 +3,24 @@ snippets
 php  snippets 
 print $    used \$ to transferr   refference:http://sublimetext.info/docs/en/extensibility/snippets.html
 
+install packages  emmet   adancedNewFile  html-css-js pretty    Sidebarenhancements
+
+
+preferrence->Package settings->emmet->user key binding->
+
+/------------key binding start------------/
+[
+{
+    "keys": ["tab"],
+    "args":
+    {
+        "action": "expand_abbreviation"
+    },
+    "command": "run_emmet_action",
+    "context": [
+    {
+        "key": "emmet_action_enabled.expand_abbreviation"
+    }]
+}
+]
+/------------key binding ends------------/   auto generate self defind html tag eg: apptool:tab <appttoll></apptool>
