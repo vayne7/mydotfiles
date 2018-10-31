@@ -1,0 +1,64 @@
+[
+{
+    "keys": ["ctrl+1"],
+    "command": "set_layout",
+    "args":
+    {
+        "cols": [0.0, 1.0],
+        "rows": [0.0, 1.0],
+        "cells": [
+            [0, 0, 1, 1]
+        ]
+    }
+},
+{
+    "keys": ["ctrl+2"],
+    "command": "set_layout",
+    "args":
+    {
+        "cols": [0.0, 0.5, 1.0],
+        "rows": [0.0, 1.0],
+        "cells": [
+            [0, 0, 1, 1],
+            [1, 0, 2, 1]
+        ]
+    }
+},
+{
+    "keys": ["ctrl+3"],
+    "command": "set_layout",
+    "args":
+    {
+        "cols": [0.0, 0.33, 0.66, 1.0],
+        "rows": [0.0, 1.0],
+        "cells": [
+            [0, 0, 1, 1],
+            [1, 0, 2, 1],
+            [2, 0, 3, 1]
+        ]
+    }
+},
+{
+    "keys": ["ctrl+alt+a"],
+    "command": "alignment"
+},
+{
+    "keys": [",", "t"],
+    "command": "next_view",
+    "context": [
+    {
+        "key": "setting.command_mode"
+    }]
+},
+{
+    "keys": [",", "r"],
+    "command": "prev_view",
+    "context": [
+    {
+        "key": "setting.command_mode"
+    }]
+},
+{ "keys":[",","b"] , "command": "move_to", "args": {"to": "bol", "extend": false} },
+{ "keys": [",","e"], "command": "move_to", "args": {"to": "eol", "extend": false} }
+
+]
